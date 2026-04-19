@@ -21,6 +21,8 @@
         private System.Windows.Forms.ComboBox cmbDevice;
         private System.Windows.Forms.Label lblMode;
         private System.Windows.Forms.ComboBox cmbMode;
+        private System.Windows.Forms.Label lblLanguage;
+        private System.Windows.Forms.ComboBox cmbLanguage;
         private System.Windows.Forms.Button btnAddFiles;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnTranscribe;
@@ -81,7 +83,7 @@
             panel1.Location = new System.Drawing.Point(0, 0);
             panel1.Name = "panel1";
             panel1.Padding = new System.Windows.Forms.Padding(15);
-            panel1.Size = new System.Drawing.Size(1000, 190);
+            panel1.Size = new System.Drawing.Size(1000, 225);
 
             // lblPython
             lblPython.AutoSize = true;
@@ -193,12 +195,29 @@
             cmbMode.Size = new System.Drawing.Size(245, 23);
             cmbMode.SelectedIndexChanged += cmbMode_SelectedIndexChanged;
 
+            // lblLanguage
+            lblLanguage = new System.Windows.Forms.Label();
+            lblLanguage.AutoSize = true;
+            lblLanguage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            lblLanguage.ForeColor = System.Drawing.Color.FromArgb(50, 50, 50);
+            lblLanguage.Location = new System.Drawing.Point(15, 153);
+            lblLanguage.Name = "lblLanguage";
+            lblLanguage.Text = "Idioma:";
+
+            // cmbLanguage
+            cmbLanguage = new System.Windows.Forms.ComboBox();
+            cmbLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cmbLanguage.Font = new System.Drawing.Font("Segoe UI", 9F);
+            cmbLanguage.Location = new System.Drawing.Point(180, 150);
+            cmbLanguage.Name = "cmbLanguage";
+            cmbLanguage.Size = new System.Drawing.Size(350, 23);
+
             // btnAddFiles
             btnAddFiles.BackColor = System.Drawing.Color.FromArgb(60, 179, 113);
             btnAddFiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnAddFiles.ForeColor = System.Drawing.Color.White;
             btnAddFiles.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            btnAddFiles.Location = new System.Drawing.Point(15, 150);
+            btnAddFiles.Location = new System.Drawing.Point(15, 188);
             btnAddFiles.Name = "btnAddFiles";
             btnAddFiles.Size = new System.Drawing.Size(160, 32);
             btnAddFiles.Text = "➕ Agregar archivos";
@@ -210,7 +229,7 @@
             btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnRemove.ForeColor = System.Drawing.Color.White;
             btnRemove.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            btnRemove.Location = new System.Drawing.Point(185, 150);
+            btnRemove.Location = new System.Drawing.Point(185, 188);
             btnRemove.Name = "btnRemove";
             btnRemove.Size = new System.Drawing.Size(175, 32);
             btnRemove.Text = "➖ Quitar seleccionados";
@@ -223,7 +242,7 @@
             btnTranscribe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnTranscribe.ForeColor = System.Drawing.Color.White;
             btnTranscribe.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            btnTranscribe.Location = new System.Drawing.Point(803, 148);
+            btnTranscribe.Location = new System.Drawing.Point(803, 186);
             btnTranscribe.Name = "btnTranscribe";
             btnTranscribe.Size = new System.Drawing.Size(162, 34);
             btnTranscribe.Text = "▶ TRANSCRIBIR";
@@ -302,6 +321,8 @@
             panel1.Controls.Add(cmbDevice);
             panel1.Controls.Add(lblMode);
             panel1.Controls.Add(cmbMode);
+            panel1.Controls.Add(lblLanguage);
+            panel1.Controls.Add(cmbLanguage);
             panel1.Controls.Add(btnAddFiles);
             panel1.Controls.Add(btnRemove);
             panel1.Controls.Add(btnTranscribe);

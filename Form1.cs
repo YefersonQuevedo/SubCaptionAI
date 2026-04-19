@@ -20,6 +20,85 @@ namespace WhisperTranscriber
             });
             cmbMode.SelectedIndex = 1;
             txtPythonPath.Text = "python";
+
+            var languages = new System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, string>>
+            {
+                new("auto", "Auto-detectar"),
+                new("es", "Español"),
+                new("en", "English"),
+                new("zh", "Chinese (中文)"),
+                new("de", "Deutsch"),
+                new("ru", "Русский"),
+                new("ko", "한국어"),
+                new("fr", "Français"),
+                new("ja", "日本語"),
+                new("pt", "Português"),
+                new("tr", "Türkçe"),
+                new("pl", "Polski"),
+                new("nl", "Nederlands"),
+                new("ar", "العربية"),
+                new("sv", "Svenska"),
+                new("it", "Italiano"),
+                new("id", "Bahasa Indonesia"),
+                new("hi", "हिन्दी"),
+                new("fi", "Suomi"),
+                new("vi", "Tiếng Việt"),
+                new("he", "עברית"),
+                new("uk", "Українська"),
+                new("el", "Ελληνικά"),
+                new("ms", "Bahasa Melayu"),
+                new("cs", "Čeština"),
+                new("ro", "Română"),
+                new("da", "Dansk"),
+                new("hu", "Magyar"),
+                new("ta", "தமிழ்"),
+                new("no", "Norsk"),
+                new("th", "ภาษาไทย"),
+                new("ur", "اردو"),
+                new("hr", "Hrvatski"),
+                new("bg", "Български"),
+                new("lt", "Lietuvių"),
+                new("la", "Latina"),
+                new("sk", "Slovenčina"),
+                new("fa", "فارسی"),
+                new("lv", "Latviešu"),
+                new("bn", "বাংলা"),
+                new("sr", "Српски"),
+                new("az", "Azərbaycan"),
+                new("sl", "Slovenščina"),
+                new("kn", "ಕನ್ನಡ"),
+                new("et", "Eesti"),
+                new("mk", "Македонски"),
+                new("is", "Íslenska"),
+                new("hy", "Հայերեն"),
+                new("ne", "नेपाली"),
+                new("mn", "Монгол"),
+                new("bs", "Bosanski"),
+                new("kk", "Қазақ"),
+                new("sq", "Shqip"),
+                new("sw", "Kiswahili"),
+                new("gl", "Galego"),
+                new("mr", "मराठी"),
+                new("pa", "ਪੰਜਾਬੀ"),
+                new("ka", "ქართული"),
+                new("be", "Беларуская"),
+                new("tg", "Тоҷикӣ"),
+                new("gu", "ગુજરાતી"),
+                new("am", "አማርኛ"),
+                new("uz", "O'zbek"),
+                new("mt", "Malti"),
+                new("tl", "Filipino"),
+                new("haw", "Hawaiian"),
+                new("ha", "Hausa"),
+                new("yo", "Yorùbá"),
+                new("af", "Afrikaans"),
+                new("cy", "Cymraeg"),
+                new("mi", "Māori"),
+            };
+            cmbLanguage.DataSource = languages;
+            cmbLanguage.DisplayMember = "Value";
+            cmbLanguage.ValueMember = "Key";
+            cmbLanguage.SelectedValue = "es";
         }
 
         // Modelos recomendados por modo (mismo orden que cmbMode)
@@ -105,7 +184,8 @@ namespace WhisperTranscriber
             var model  = cmbModel.SelectedItem?.ToString() ?? "base";
             var device = cmbDevice.SelectedItem?.ToString() ?? "cpu";
             var modeIdx = cmbMode.SelectedIndex >= 0 ? cmbMode.SelectedIndex : 1;
-            var mode   = ModoArgs[modeIdx];
+            var mode     = ModoArgs[modeIdx];
+            var language = cmbLanguage.SelectedValue?.ToString() ?? "es";
 
             try
             {
@@ -136,7 +216,8 @@ namespace WhisperTranscriber
                 psi.ArgumentList.Add("--out");    psi.ArgumentList.Add(txtOutDir.Text);
                 psi.ArgumentList.Add("--model");  psi.ArgumentList.Add(model);
                 psi.ArgumentList.Add("--device"); psi.ArgumentList.Add(device);
-                psi.ArgumentList.Add("--mode");   psi.ArgumentList.Add(mode);
+                psi.ArgumentList.Add("--mode");     psi.ArgumentList.Add(mode);
+                psi.ArgumentList.Add("--language"); psi.ArgumentList.Add(language);
 
                 using var proc = new Process { StartInfo = psi };
                 proc.OutputDataReceived += (_, a) => {
