@@ -26,6 +26,7 @@
         private System.Windows.Forms.Button btnAddFiles;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnTranscribe;
+        private System.Windows.Forms.Button btnAiReview;
         private System.Windows.Forms.ListView lvFiles;
         private System.Windows.Forms.TextBox txtLog;
 
@@ -236,6 +237,20 @@
             btnRemove.UseVisualStyleBackColor = false;
             btnRemove.Click += btnRemove_Click;
 
+            // btnAiReview
+            btnAiReview = new System.Windows.Forms.Button();
+            btnAiReview.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            btnAiReview.BackColor = System.Drawing.Color.FromArgb(106, 90, 205);
+            btnAiReview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAiReview.ForeColor = System.Drawing.Color.White;
+            btnAiReview.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            btnAiReview.Location = new System.Drawing.Point(565, 186);
+            btnAiReview.Name = "btnAiReview";
+            btnAiReview.Size = new System.Drawing.Size(220, 34);
+            btnAiReview.Text = "🤖 Revisar SRT con IA";
+            btnAiReview.UseVisualStyleBackColor = false;
+            btnAiReview.Click += btnAiReview_Click;
+
             // btnTranscribe
             btnTranscribe.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
             btnTranscribe.BackColor = System.Drawing.Color.FromArgb(255, 140, 0);
@@ -325,6 +340,7 @@
             panel1.Controls.Add(cmbLanguage);
             panel1.Controls.Add(btnAddFiles);
             panel1.Controls.Add(btnRemove);
+            panel1.Controls.Add(btnAiReview);
             panel1.Controls.Add(btnTranscribe);
 
             // Agregar controles a panel2

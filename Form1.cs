@@ -327,6 +327,12 @@ namespace WhisperTranscriber
         }
 
 
+        private void btnAiReview_Click(object sender, EventArgs e)
+        {
+            var form = new AiReviewForm();
+            form.Show();
+        }
+
         private void AppendLog(string msg)
         {
             if (txtLog.InvokeRequired)
