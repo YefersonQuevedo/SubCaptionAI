@@ -181,11 +181,13 @@ namespace WhisperTranscriber
             btnTranscribe.Enabled = false;
             var py = txtPythonPath.Text.Trim();
             var script = txtScriptPath.Text.Trim();
-            var model  = cmbModel.SelectedItem?.ToString() ?? "base";
-            var device = cmbDevice.SelectedItem?.ToString() ?? "cpu";
-            var modeIdx = cmbMode.SelectedIndex >= 0 ? cmbMode.SelectedIndex : 1;
-            var mode     = ModoArgs[modeIdx];
-            var language = cmbLanguage.SelectedValue?.ToString() ?? "es";
+            var modelNames = new[] { "tiny", "base", "small", "medium", "large" };
+            var modelIdx   = cmbModel.SelectedIndex;
+            var model      = (modelIdx >= 0 && modelIdx < modelNames.Length) ? modelNames[modelIdx] : "base";
+            var device     = cmbDevice.SelectedItem?.ToString() ?? "cpu";
+            var modeIdx    = cmbMode.SelectedIndex >= 0 ? cmbMode.SelectedIndex : 1;
+            var mode       = ModoArgs[modeIdx];
+            var language   = (cmbLanguage.SelectedItem is System.Collections.Generic.KeyValuePair<string, string> kv) ? kv.Key : "es";
 
             try
             {
