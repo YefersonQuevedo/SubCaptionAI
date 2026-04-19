@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//e/video/academia chachin/**)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nImprove WhisperTranscriber UI and fix multi-file transcription bug\n\n- Fix: Process all files in a single Python call instead of multiple calls\n- This prevents the model from reloading for each file, significantly improving performance\n- Add modern UI design with color-coded buttons and panels\n- Add dark theme for log console\n- Improve visual layout with better spacing and organization\n- Increase default window size to 1000x700 for better usability\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(dotnet build:*)",
+      "Bash(git config *)",
+      "Bash(git init *)",
+      "Bash(git remote *)",
+      "Bash(git commit *)",
+      "Bash(git branch *)",
+      "Bash(git push *)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
