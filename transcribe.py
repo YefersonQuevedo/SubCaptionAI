@@ -33,7 +33,12 @@ MODES = {
     ),
 }
 
+MODO_A_MODELO = {"rapido": "base", "balanceado": "small", "preciso": "large"}
+
 def transcribe_video(video_path: str, out_dir: str, model_name: str, device: str, language: str, mode_cfg: dict, model=None):
+    if model_name in MODO_A_MODELO:
+        print(f"[WARN] '{model_name}' es un modo, no un modelo. Usando '{MODO_A_MODELO[model_name]}' en su lugar.", flush=True)
+        model_name = MODO_A_MODELO[model_name]
     if not os.path.exists(video_path):
         print(f"[ERROR] No existe: {video_path}", flush=True)
         return 1, model
